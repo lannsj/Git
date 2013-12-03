@@ -20,7 +20,7 @@ public class Controller extends JPanel implements ChangeListener, ActionListener
 	
 	
 	Controller(Model ModelIn, View ViewIn) {
-		JSlider LSlider = new JSlider(SwingConstants.HORIZONTAL,1,10,3);
+		JSlider LSlider = new JSlider(SwingConstants.VERTICAL,1,10,3);
 		JSlider dSlider = new JSlider(SwingConstants.HORIZONTAL,1,10,3);
 		add(dSlider);
 		add(LSlider);
@@ -37,16 +37,45 @@ public class Controller extends JPanel implements ChangeListener, ActionListener
 	}
 	
 
-	public void stateChanged (ChangeEvent e){
+//	public void stateChanged (ChangeEvent e){
+//
+//		JSlider slider = (JSlider) e.getSource();
+//
+//		int x = slider.getOrientation();
+//		
+//		System.out.println(x);
+//		
+//		if(x == 1);{
+//			
+//			System.out.println("blub");
+//		}
+//		if(x==0);{
+//
+//			System.out.println("apa");
+//			
+//			}
+//		
+//		
+//		}
 
-		ModelIn.setL(LSlider.getValue());
-
-		}
-
+    public void stateChanged(ChangeEvent e){
+        if(e.getSource()==LSlider);{
+                this.L = LSlider.getValue();
+                System.out.println("blub");
+        }
+        if(e.getSource()==dSlider);{
+                int delta = dSlider.getValue();
+                MyTimer.stop();
+                MyTimer = new Timer(delta, this);
+                
+                }
+        }
+	
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
+		//System.out.println(ae.getSource());
 	}
 	
 }
